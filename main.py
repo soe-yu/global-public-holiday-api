@@ -55,6 +55,16 @@ async def get_festivals(
 
     return {"source": "local", "data": data}
 
+# -----------------------------
+# FESTIVALS TEST ENDPOINT
+# -----------------------------
+@app.get("/festivals/test")
+def test_festivals():
+    import os
+    files = os.listdir(FESTIVAL_DIR)
+    return {"festivals_dir": FESTIVAL_DIR, "files": files}
+
+
 if __name__ == "__main__":
     import uvicorn
     port = int(os.environ.get("PORT", 8000))
